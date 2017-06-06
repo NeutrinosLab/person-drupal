@@ -1,7 +1,7 @@
-ahmed_azab.form:
+person_drupal.form:
   path: '/admin/config/person'
   defaults:
-    _form: '\Drupal\ahmed_azab\Form\Person'
+    _form: '\Drupal\person_drupal\Form\Person'
     _title: 'Person Form'
   requirements:
     _permission: 'access content'

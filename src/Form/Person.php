@@ -1,10 +1,9 @@
 <?php
 
-namespace Drupal\ahmed_azab\Form;
+namespace Drupal\person_drupal\Form;
 
 
 use Drupal\Core\Form\ConfigFormBase;
-use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 class Person extends ConfigFormBase
@@ -18,7 +17,7 @@ class Person extends ConfigFormBase
    */
   public function getFormId()
   {
-    return "ahmed_azab_settings_form";
+    return "person_drupal_settings_form";
   }
 
   /**
@@ -34,33 +33,33 @@ class Person extends ConfigFormBase
    */
   public function buildForm(array $form, FormStateInterface $form_state)
   {
-    $config = $this->config('ahmed_azab.settings');
+    $config = $this->config('person_drupal.settings');
     $form['name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your name'),
       '#description' => $this->t('Enter your name'),
-      '#value' => $config->get('ahmed_azab.name'),
+      '#value' => $config->get('person_drupal.name'),
       '#required' => TRUE,
     ];
 
     $form['email'] = [
       '#type' => 'email',
       '#title' => $this->t('Email'),
-      '#value' => $config->get('ahmed_azab.email'),
+      '#value' => $config->get('person_drupal.email'),
       '#description' => 'Entr your Email',
     ];
 
     $form['age'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Age'),
-      '#value' => $config->get('ahmed_azab.age'),
+      '#value' => $config->get('person_drupal.age'),
       '#description' => 'Enter your Age',
     ];
 
     $form['gender'] = [
       '#type' => 'select',
       '#title' => $this->t('Gender'),
-      '#value' => $config->get('ahmed_azab.gender'),
+      '#value' => $config->get('person_drupal.gender'),
       '#options' => [
         'm' => $this->t('Male'),
         'f' => $this->t('Female'),
@@ -98,12 +97,12 @@ class Person extends ConfigFormBase
    */
   public function submitForm(array &$form, FormStateInterface $form_state)
   {
-    $config = $this->config('ahmed_azab.settings');
+    $config = $this->config('person_drupal.settings');
     $input = $form_state->getUserInput();
-    $config->set('ahmed_azab.name', $input['name']);
-    $config->set('ahmed_azab.email', $input['email']);
-    $config->set('ahmed_azab.age', $input['age']);
-    $config->set('ahmed_azab.gender', $input['gender']);
+    $config->set('person_drupal.name', $input['name']);
+    $config->set('person_drupal.email', $input['email']);
+    $config->set('person_drupal.age', $input['age']);
+    $config->set('person_drupal.gender', $input['gender']);
     $config->save();
     drupal_set_message("Your configurations has been set successfully");
   }
@@ -118,12 +117,12 @@ class Person extends ConfigFormBase
   protected function getEditableConfigNames()
   {
     return [
-      'ahmed_azab.settings',
+      'person_drupal.settings',
     ];
   }
 
   public function getConf($name){
-    $config = $this->config('ahmed_azab.settings');
-    return $config->get('ahmed_azab.'.$name);
+    $config = $this->config('person_drupal.settings');
+    return $config->get('person_drupal.'.$name);
   }
 }
