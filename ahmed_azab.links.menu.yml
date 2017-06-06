@@ -1,0 +1,6 @@
+ahmed_azab.admin:
+  title: 'Person form settings'
+  description: 'Person Form'
+  parent: system.admin_config_development
+  route_name: ahmed_azab.form
+  weight: 100
